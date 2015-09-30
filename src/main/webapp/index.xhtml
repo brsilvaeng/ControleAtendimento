@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Controle de Atendimento Bancário (PariPassu)</title>
+</h:head>
+<h:body>
+	<h:form id="frmApp">
+		<p:growl id="growl" life="2000" />
+	    <p:fieldset legend="CLIENTE" style="margin-bottom:20px">
+		    <p:panelGrid columns="4" cellpadding="5">
+			    <p:commandButton value="Normal" update="frmApp" action="#{atendimento.createTicketNormal}" />
+			    <p:commandButton value="Preferencial" update="frmApp" action="#{atendimento.createTicketPrefer}" />
+			</p:panelGrid>
+	    </p:fieldset>
+	    <p:fieldset legend="GERENTE" style="margin-bottom:20px">
+	    	<p:panelGrid columns="4" cellpadding="5">
+			    <p:commandButton value="Chamar Senha" update="frmApp" action="#{atendimento.ticketCall()}" />
+			    <p:commandButton value="Reiniciar Contagem" update="growl" action="#{atendimento.resetCount()}" />
+			    <p:outputLabel value="Senha em Atendimento ="/>
+			    <h:outputText id="ticketCall" value="#{atendimento.call}" />
+	    	</p:panelGrid>
+	    </p:fieldset>
+	    
+	    <p:dataList value="#{atendimento.tickets}" var="ticket" id="ticketsList" type="ordered">
+	        <f:facet name="header">
+	            Quadro de Ordem de Chamada de Senhas
+	        </f:facet>
+	        #{ticket.code}, #{ticket.time}, #{ticket.date}
+	    </p:dataList>
+	    
+<!--    
+	    <p:dataTable value="#{atendimento.tickets}" var="ticket" id="ticketsTable">
+		    <p:column headerText="Tipo">
+		        <h:outputText value="#{ticket.type}" />
+		    </p:column>	    
+		    <p:column headerText="Número">
+		        <h:outputText value="#{ticket.num}" />
+		    </p:column>	    
+		    <p:column headerText="Código">
+		        <h:outputText value="#{ticket.strCode()}" />
+		    </p:column>	    
+		    <p:column headerText="Hora">
+		        <h:outputText value="#{ticket.time}" />
+		    </p:column>	    
+		    <p:column headerText="Data">
+		        <h:outputText value="#{ticket.date}" />
+		    </p:column>	    
+	    </p:dataTable>
+
+
+ 	    
+		<p:outputPanel id="books">
+        	<p:dataTable value="#{atendimento.tickets}" var="ticket" id="ticketsTable">
+ 
+	            <p:column headerText="Tipo">
+	                <h:outputText value="#{ticket.type}" />
+	            </p:column>
+	            <p:column headerText="Numero">
+	                <f:facet name="header">
+	                    <h:outputText value="Author" />
+	                </f:facet>
+	                <h:outputText value="#{ticket.num}" />
+	            </p:column>	            
+	 
+	        </p:dataTable>
+	    </p:outputPanel>	    
+ -->	    
+	    
+	    
+	    
+	</h:form>
+ 
+</h:body>
+
+</html>
