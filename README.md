@@ -2,10 +2,8 @@
 Sistema de controle de senhas para atendimento bancário.<br/>
 <br/>
 Utilizados:
-- Java 7;
 - Tomcat 7;
 - Maven;
-- Não foi utilizado banco de dados.
 
 Orientações para executar o projeto:
  - Fazer o download o arquivo ./war/ControleAtendimento1.0.0.war;
@@ -13,6 +11,7 @@ Orientações para executar o projeto:
  - Clicar em "/ControleAtendimento1.0.0" do List Applications (executar a aplicação);
   
 Observações:
+- Não foi utilizado banco de dados;
 - Existe apenas uma tela (index.xhtml);
 - O Field "Cliente" apresenta os botôes com as funções de gerar senha: Normal (N####) e Preferencial (P####);
 - O Field "Gerente" apresenta um botão "Chamar Senha", que tira a senha da lista e mostra em "Senha em Atendimento", e um botão "Reiniciar Contagem", que reinicia a numeração das senhas normais e preferenciais;
